@@ -2,7 +2,8 @@
 
 A small React + TypeScript app built with Vite that connects to
 `GET http://api.dev.cooking.gg/kitchen/stove`, sends a JWT in the
-`Authorization: Bearer <JWT>` header, and reads the SSE stream via `fetch`.
+`Authorization: Bearer <JWT>` header, and logs the server response to the browser
+console.
 
 ## Run Locally
 
@@ -16,6 +17,7 @@ cp .env.example .env
 
 ```env
 VITE_STOVE_URL=http://api.dev.cooking.gg/kitchen/stove
+VITE_STOVE_CHAIN=solana
 VITE_STOVE_JWT=PASTE_YOUR_JWT_HERE
 ```
 
@@ -31,6 +33,7 @@ The app runs at `http://localhost:3000`.
 ## Environment Variables
 
 - `VITE_STOVE_URL` - SSE endpoint.
+- `VITE_STOVE_CHAIN` - required query param. Supported values: `solana`, `bsc`, `base`. Defaults to `solana`.
 - `VITE_STOVE_JWT` - JWT token used in the `Authorization` header.
 
 The `.env` file is included in `.gitignore`, so the token is not committed to
@@ -39,9 +42,10 @@ know which variables are required.
 
 ## Request Headers
 
-The request to `stove` uses these headers:
+The request to `stove` uses these headers and query params:
 
 ```http
+GET /kitchen/stove?chain=solana
 Authorization: Bearer <JWT>
 Accept: text/event-stream
 Cache-Control: no-cache
@@ -61,12 +65,11 @@ That is why this project uses a different approach:
 4. The stream is parsed manually as SSE: messages are separated by blank lines,
    and the `event`, `id`, and `data` fields are assembled into event objects.
 
-## What Is Already Implemented
+## Current Behavior
 
-- UI for connecting to and disconnecting from the stream.
-- SSE reading through `fetch` instead of `EventSource`.
-- Rendering the latest incoming events in the interface.
-- Displaying HTTP status, `Content-Type`, and the number of received messages.
+- The app opens the `stove` connection automatically on startup.
+- Incoming SSE messages are parsed and printed with `console.log`.
+- If the JWT is missing, the app logs a startup message instead of making the request.
 
 ## Useful Commands
 

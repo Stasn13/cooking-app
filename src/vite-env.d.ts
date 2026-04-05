@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
   readonly VITE_STOVE_URL?: string
+  readonly VITE_STOVE_CHAIN?: 'solana' | 'bsc' | 'base'
   readonly VITE_STOVE_JWT?: string
 }
 
