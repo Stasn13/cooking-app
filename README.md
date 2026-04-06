@@ -5,6 +5,9 @@ A small React + TypeScript app built with Vite that connects to
 `Authorization: Bearer <JWT>` header, and logs the server response to the browser
 console.
 
+You can test it here:
+https://cooking-app-gamma.vercel.app/
+
 ## Run Locally
 
 1. Create a local `.env` file from the example:
@@ -29,6 +32,11 @@ npm run dev
 ```
 
 The app runs at `http://localhost:3000`.
+
+## Might be enhanced with:
+- Virtualization of the list
+- Visualisation for list items update
+- Implement loading and error handling visually(states already inside)
 
 ## Environment Variables
 
