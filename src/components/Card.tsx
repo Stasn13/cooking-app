@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { CopyIcon } from "../assets/icons/CopyIcon";
 import { LayerIcon } from "../assets/icons/LayerIcon";
 import { LightningIcon } from "../assets/icons/LightningIcon";
@@ -122,7 +123,7 @@ function formatCompactMetric(value: unknown) {
   return trimTrailingZeros(parsed.toFixed(2));
 }
 
-export const Card = ({
+export const Card = memo(function Card({
   name,
   image,
   mint,
@@ -132,7 +133,7 @@ export const Card = ({
   liquidity,
   marketCap,
   volume,
-}: CardProps) => {
+}: CardProps) {
   const safeImage = sanitizeImageUrl(image);
   const safeName = sanitizeText(name) ?? "Unknown token";
   const safeMint = formatMint(sanitizeText(mint) ?? "No mint");
@@ -176,7 +177,10 @@ export const Card = ({
             </div>
           </div>
 
-          <button className="flex gap-1.5 items-center border border-gray-600 bg-gray-400 rounded-[] p-1.75 text-white ml-auto cursor-pointer">
+          <button
+            type="button"
+            className="ml-auto flex cursor-pointer items-center gap-1.5 rounded-md border border-gray-600 bg-gray-400 p-1.75 text-white"
+          >
             <LightningIcon />
             <span className="text-[14px] leading-[14px]">$100</span>
           </button>
@@ -222,4 +226,4 @@ export const Card = ({
       </div>
     </div>
   );
-};
+});
