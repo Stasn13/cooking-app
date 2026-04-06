@@ -260,7 +260,7 @@ function App() {
           {sections.map((section) => (
             <article
               key={section.title}
-              className="flex h-[calc(100vh-4rem)] min-h-0 flex-col overflow-hidden rounded-xl border border-white/10 bg-black px-2 py-4.5 shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+              className="flex h-[calc(100vh-4rem)] min-h-0 flex-col overflow-hidden rounded-xl border border-white/10 bg-black px-2 py-4.5 pr-0 shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
             >
               <header className="sticky top-0 z-10 mb-4 flex items-center gap-1.5 pb-2">
                 <h2 className={`text-2xl font-semibold ${section.color}`}>{section.title}</h2>
@@ -268,7 +268,7 @@ function App() {
               </header>
 
               {section.items.length > 0 ? (
-                <ul className="min-h-0 flex-1 space-y-3 overflow-y-auto pr-1">
+                <ul className="list-scrollbar min-h-0 flex-1 space-y-3 overflow-y-auto pr-1">
                   {section.items.map((item, index) => (
                     <Card
                       key={`${section.title}-${index}-${String(item.name ?? "token")}`}

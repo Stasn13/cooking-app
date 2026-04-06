@@ -26,3 +26,21 @@ body {
     'Segoe UI',
     sans-serif;
 }
+
+.list-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(30, 30, 30, 1) transparent;
+}
+
+.list-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.list-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.list-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: rgba(30, 30, 30, 1);
+}
